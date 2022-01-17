@@ -1,16 +1,13 @@
-import React, { useState, useEffect } from 'react';
-import Header from './components/Layout/Header/Header';
-import Meals from './components/Meals/Meals';
-
+import React, { useState, useEffect } from "react";
+import Header from "./components/Layout/Header/Header";
+import Meals from "./components/Meals/Meals";
 
 function App() {
-
-
   return (
     <div>
-      <Header/>
+      <Header />
       <main>
-      <Meals/>
+        <Meals />
       </main>
     </div>
   );
