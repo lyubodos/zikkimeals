@@ -35,11 +35,8 @@ export default function Cart(props) {
     <Modal onHideCart={props.onHideCart}>
       {cartItems}
       <div>
-        <p>
-          A delicious spagetti carbonara from one of the best chefs in Italy
-        </p>
         <span>Total Amonut: </span>
-        <span>35.12$</span>
+        <span>{cartCtx.totalAmount.toFixed(2)}$</span>
       </div>
       <div className={classes.actions}>
         <button className={classes["button--alt"]} onClick={props.onHideCart}>
