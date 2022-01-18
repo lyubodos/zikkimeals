@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import CartProvider from "../store/CartProvider";
+import CartProvider from "./store/CartProvider";
 import Cart from "./components/Cart/Cart";
 import Header from "./components/Layout/Header/Header";
 import Meals from "./components/Meals/Meals";
