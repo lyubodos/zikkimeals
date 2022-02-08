@@ -1,41 +1,38 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import Card from "../UI/Card/Card";
 
 import classes from "./AvailableMeals.module.css";
 import MealItem from "./MealItem/MealItem";
 
-const DUMMY_MEALS = [
-  {
-    id: "m1",
-    name: "Sushi",
-    description: "Finest fish and veggies",
-    price: 12.99,
-  },
-  {
-    id: "m2",
-    name: "Schnitzel",
-    description: "An austrian delicious specialty!",
-    price: 16.5,
-  },
-  {
-    id: "m3",
-    name: "Classic Hamburger",
-    description:
-      "American, raw, meaty, cooked rare and ready to pleace your mouth",
-    price: 10.99,
-  },
-  {
-    id: "m4",
-    name: "Cesar's Salad",
-    description:
-      "Classic Cesar's Salad with cooked chicken beasts and finely sliced letus and veggies",
-    price: 13.99,
-  },
-];
 
 export default function AvailableMeals() {
 
-  const storedMeals = DUMMY_MEALS.map((meal) => {
+  const [meals, setMeals] = useState([]);
+
+  useEffect(() => {
+
+    const reqData = async () => {
+      const resData = await fetch('https://zikki-meals-default-rtdb.europe-west1.firebasedatabase.app/meals.json');
+      const data = await resData.json();
+
+      const loaddedData = [];
+
+      for (const keyObj in data) {
+       loaddedData.push({
+          key: keyObj,
+          name: data[keyObj].name,
+          description: data[keyObj].description,
+          price: data[keyObj].price
+        })
+      }
+      setMeals(loaddedData);
+    }
+
+    reqData();
+      
+  }, [])
+
+  const storedMeals = meals.map((meal) => {
     return <MealItem {...meal} key={meal.id}>{meal.name}</MealItem>;
   });
 
