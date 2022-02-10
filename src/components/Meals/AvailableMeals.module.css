@@ -4,12 +4,23 @@
     margin: 3rem auto;
     animation: meals-appear 1s ease-out forwards;
   }
+
+  .mealsLoading{
+    text-align: center;
+    color: #FFF;
+  }
+
+  .mealsError{
+    text-align: center;
+    color: red;
+  }
   
   .meals ul {
     list-style: none;
     margin: 0;
     padding: 0;
   }
+ 
   
   @keyframes meals-appear {
     from {
@@ -22,3 +33,4 @@
       transform: translateY(0);
     }
   }
+
