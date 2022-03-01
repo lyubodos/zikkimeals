@@ -16,7 +16,7 @@ const cartReducer = (state, action) => {
     const updatedTotalAmount =
       state.totalAmount + action.item.price * action.item.amount;
 
-    const existingCartItemIndex = state.items.findIndex((item) => {
+    const existingCartItemIndex = state.items.findIndex( item => {
       return item.id === action.item.id;
     });
 
@@ -69,6 +69,10 @@ const cartReducer = (state, action) => {
     };
   }
 
+  if(action.type === "CLEAR"){
+    return defaultState;
+  }
+
   return defaultState;
 };
 
@@ -83,10 +87,15 @@ export default function CartProvider(props) {
     dispatchCart({ type: ACTIONS.RMV_ITEM, id: id });
   };
 
+  const clearCartHandler = () => {
+    dispatchCart({type: "CLEAR"});
+  }
+
   const cartContext = {
     items: cartState.items,
     totalAmount: cartState.totalAmount,
     addItem: addItemToCartHandler,
+    clearCart: clearCartHandler,
     removeItem: removeItemFromHandler,
   };
 
