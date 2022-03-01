@@ -1,4 +1,4 @@
-import React, { useContext } from "react";
+import { useContext } from "react";
 import CartContext from "../../../store/cart-conext";
 
 import classes from "./MealItem.module.css";
@@ -9,7 +9,7 @@ export default function MealItem(props) {
 
   const price = props.price.toFixed(2) + "$";
 
-  const addCartHandler = (amount) => {
+  const addCartHandler = amount => {
     cartCtx.addItem({
       id: props.id,
       name: props.name,

@@ -25,7 +25,7 @@ export default function AvailableMeals() {
 
       for (const keyObj in data) {
         loaddedData.push({
-          key: keyObj,
+          keyId: keyObj,
           name: data[keyObj].name,
           description: data[keyObj].description,
           price: data[keyObj].price,
@@ -65,7 +65,7 @@ export default function AvailableMeals() {
 
   const storedMeals = meals.map( meal => {
     return (
-      <MealItem {...meal} key={meal.id}>
+      <MealItem {...meal} key={meal.keyId} id={meal.keyId}>
         {meal.name}
       </MealItem>
     );
