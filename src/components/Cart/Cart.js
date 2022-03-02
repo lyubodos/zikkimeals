@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import { useSelector } from "react-redux";
 import { useContext } from "react/cjs/react.development";
 import CartContext from "../../store/cart-conext";
 import Modal from "../UI/Modal/Modal";
@@ -8,6 +9,13 @@ import CartItem from "./CartItem";
 import Checkout from "./Checkout";
 
 export default function Cart(props) {
+  //Code for implementation
+  const cartData = useSelector(state => state.cart.items);
+
+
+
+
+  //Old code below
   const [isCheckingOut, setIsCheckingOut] = useState(false);
   const [isSubmiting, setIsSubmiting] = useState(false);
   const [didSubmit, setIsSubmit] = useState(false);
@@ -27,7 +35,7 @@ export default function Cart(props) {
 
   const cartItems = (
     <ul className={classes["cart-items"]}>
-      {cartCtx.items.map((item) => (
+      {cartData.map((item) => (
         <CartItem
           key={item.id}
           {...item}
